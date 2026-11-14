@@ -346,9 +346,41 @@ html { scroll-behavior: smooth; }
 .ent-bg-wrap { position: absolute; inset: -3%; }
 .ent-bg, .door-scene { position: absolute; inset: 0; width: 100%; height: 100%; }
 .door-scene { object-fit: cover; object-position: 50% 58%; }
-.ent-light { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 55% 45% at 50% 50%, rgba(255,232,170,.32), transparent 70%), linear-gradient(180deg, rgba(251,243,222,.82) 0, rgba(251,243,222,.3) 30%, transparent 46%); }
-.ent-light::after { content: ""; position: absolute; inset: -20%; background: repeating-conic-gradient(from 200deg at 50% -10%, rgba(255,236,170,.0) 0 7deg, rgba(255,240,180,.10) 9deg, rgba(255,236,170,0) 12deg); opacity: .8; }
-.ent-vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 55%, transparent 52%, rgba(50,14,10,.5) 100%); }
+
+.ent-light {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse 55% 45% at 50% 50%,
+      rgba(255,232,170,.20),
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(251,243,222,.48) 0,
+      rgba(251,243,222,.18) 30%,
+      transparent 46%
+    );
+}
+
+.ent-light::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+
+  background: repeating-conic-gradient(
+    from 200deg at 50% -10%,
+    rgba(255,236,170,0) 0 7deg,
+    rgba(255,240,180,.055) 9deg,
+    rgba(255,236,170,0) 12deg
+  );
+
+  opacity: .5;
+}
+
 .ent-title { position: absolute; z-index: 5; top: clamp(54px, 9svh, 96px); left: 0; right: 0; padding: 0 14px; }
 .devanagari { margin: 0 0 clamp(6px, 1.4svh, 14px); color: var(--primary); font-size: clamp(13px, 1.6vw, 17px); letter-spacing: .08em; text-shadow: 0 1px 8px rgba(255,246,220,.9); }
 .ent-sub { margin: clamp(8px, 1.6svh, 18px) 0 0; font: 600 clamp(16px, 2.2vw, 23px)/1.4 var(--font-serif); color: var(--primary); text-shadow: 0 1px 10px rgba(255,246,220,.95); }
