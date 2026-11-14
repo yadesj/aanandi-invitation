@@ -949,15 +949,117 @@ html { scroll-behavior: smooth; }
 .event-note { font: italic 18px var(--font-serif); color: var(--muted-foreground); }
 .schedule-date { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 10px; letter-spacing: .2em; color: var(--muted-foreground); }
 .countdown-section { background: color-mix(in oklab, var(--secondary) 88%, transparent); border-block: 1px solid var(--border); overflow: hidden; }
-.countdown-grid { max-width: 680px; margin: 32px auto 12px; }
-.countdown-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
-.countdown-unit { display: flex; flex-direction: column; gap: 12px; border-right: 1px solid color-mix(in oklab, var(--gold) 50%, transparent); }
-.countdown-unit:last-child { border: 0; }
-.countdown-number { font: 600 66px/1.1 var(--font-display); color: var(--primary); font-variant-numeric: tabular-nums; min-width: 2ch; }
-.countdown-unit .eyebrow { font-size: 8px; color: var(--gold-deep); }
-.diya-vignette { position: relative; width: 110px; height: 90px; margin: 30px auto -35px; }
-.diya-vignette .ceremony-art { width: 100%; height: 100%; filter: drop-shadow(0 8px 10px rgba(80,40,0,.3)); }
-.diya-glow { position: absolute; left: 49%; top: 30%; width: 6px; height: 14px; border-radius: 50%; background: #fff0b0; box-shadow: 0 0 14px 7px rgba(255,200,90,.65), 0 0 40px 18px rgba(255,170,60,.25); animation: flame 1.6s ease-in-out infinite alternate; }
+
+/* ── PREMIUM HOST COUNTDOWN ── */
+.hosts-countdown {
+  max-width: 760px;
+  margin: 42px auto 10px;
+  padding: 30px 24px 12px;
+  border-top: 1px solid color-mix(in oklab, var(--gold) 45%, transparent);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(220, 183, 104, .13), transparent 70%);
+}
+
+.hosts-countdown > .eyebrow {
+  color: var(--gold-deep);
+  letter-spacing: .22em;
+}
+
+.hosts-countdown h2.calligraphy {
+  font-size: clamp(38px, 5vw, 54px);
+  margin: 8px 0 22px;
+}
+
+.countdown-grid {
+  width: 100%;
+  max-width: 680px;
+  margin: 24px auto 12px;
+}
+
+.countdown-inner {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.countdown-unit {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 5px 14px;
+  border: 1px solid rgba(190, 148, 75, .48);
+  background: linear-gradient(145deg, #fffaf0, #f4e8cf);
+  box-shadow:
+    inset 0 0 0 3px rgba(255,255,255,.5),
+    0 5px 14px rgba(70, 25, 20, .07);
+}
+
+.countdown-unit::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border: 1px solid rgba(190, 148, 75, .2);
+  pointer-events: none;
+}
+
+.countdown-card {
+  display: grid;
+  place-items: center;
+  min-height: 76px;
+  width: 100%;
+  perspective: 500px;
+}
+
+.countdown-number {
+  display: block;
+  font: 600 clamp(38px, 6vw, 64px)/1 var(--font-display);
+  color: var(--primary);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 1px rgba(255,255,255,.7);
+  backface-visibility: hidden;
+}
+
+.countdown-label {
+  color: var(--gold-deep);
+  font: 500 9px/1.4 var(--font-sans);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.hosts-countdown .diya-vignette {
+  margin: 24px auto -28px;
+}
+
+.diya-vignette {
+  position: relative;
+  width: 110px;
+  height: 90px;
+  margin: 30px auto -35px;
+}
+
+.diya-vignette .ceremony-art {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 8px 10px rgba(80,40,0,.3));
+}
+
+.diya-glow {
+  position: absolute;
+  left: 49%;
+  top: 30%;
+  width: 6px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff0b0;
+  box-shadow: 0 0 14px 7px rgba(255,200,90,.65), 0 0 40px 18px rgba(255,170,60,.25);
+  animation: flame 1.6s ease-in-out infinite alternate;
+}
+
 
 /* ── Explore AANANDI ── */
 .showcase-section { max-width: 1120px; margin: auto; }
@@ -1046,7 +1148,48 @@ address { font: normal 24px/1.65 var(--font-serif); margin: 22px 0; } address st
   .blessings-copy { max-width: 270px; font-size: 20px; } .invocation { font-size: 21px; } .hosts { font-size: 32px; max-width: 250px; }
   .main-invitation { padding: 30px 14px 45px; } .ornamental-invitation { padding: 50px 22px 40px; } .invitation-copy { font-size: 21px; } .ceremony-date { gap: 14px; } .ceremony-date strong { font-size: 66px; } .ceremony-date > span { width: 72px; font-size: 8px; } .date-footnote { font-size: 19px; }
   .schedule-section { padding: 30px 22px 40px; } .ceremony-schedule { grid-template-columns: 1fr; margin-top: 15px; } .schedule-event { display: grid; grid-template-columns: 95px 1fr; column-gap: 18px; text-align: left; border-right: 0; border-bottom: 1px solid var(--border); padding: 23px 0; } .schedule-event:last-child { border: 0; } .schedule-event .ceremony-art { grid-row: 1 / 4; width: 95px; height: 105px; margin: auto; } .event-number { display: none; } .event-time { margin: 5px 0; } .schedule-event h3 { margin: 5px 0; font-size: 29px; } .event-note { font-size: 16px; margin: 5px 0; }
-  .countdown-number { font-size: 40px; } .countdown-unit { gap: 8px; } .countdown-unit .eyebrow { font-size: 6px; letter-spacing: .14em; } .countdown-section { padding-inline: 12px; } .countdown-section h2.calligraphy { font-size: 37px; }
+ 
+.hosts-countdown {
+  margin-top: 30px;
+  padding: 24px 2px 10px;
+}
+
+.hosts-countdown h2.calligraphy {
+  font-size: 36px;
+  margin-bottom: 18px;
+}
+
+.countdown-grid {
+  margin: 18px auto 10px;
+}
+
+.countdown-inner {
+  gap: 6px;
+}
+
+.countdown-unit {
+  padding: 10px 2px;
+  gap: 8px;
+}
+
+.countdown-card {
+  min-height: 54px;
+}
+
+.countdown-number {
+  font-size: clamp(27px, 8vw, 40px);
+}
+
+.countdown-label {
+  font-size: 7px;
+  letter-spacing: .1em;
+}
+
+.hosts-countdown .diya-vignette {
+  width: 95px;
+  height: 78px;
+}
+
   .showcase-sub { font-size: 32px; } .tab-trigger { font-size: 10px; letter-spacing: .12em; padding: 12px 8px; } .gallery { grid-template-columns: repeat(2, 1fr); } .exterior-hero { aspect-ratio: 4 / 3; } .floor-note { font-size: 19px; }
   .map-frame iframe { height: 230px; } .invitation-button, .botanical-button { padding: 0 15px; font-size: 8px; } .family-names { font-size: 26px; } .closing-copy { font-size: 21px; } .closing-diyas { gap: 130px; } .page-footer { font-size: 6px; letter-spacing: .1em; }
 }
