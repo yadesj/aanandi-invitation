@@ -5,9 +5,9 @@ import gsap from "gsap";
  * One central audio controller for the whole invitation.
  * - Exactly one HTMLAudioElement exists (kept on `window` so hot reloads cannot create a second one).
  * - React components only *read* this store; re-rendering never touches playback.
- * - The audio file lives at public/audio/background-music.mp3 (see public/audio/README.txt).
+ * The audio file lives at public/audio/song.mp3.
  */
-export const MUSIC_SRC = "/audio/background-music.mp3";
+export const MUSIC_SRC = "/audio/songg.mp3";
 const PREF_KEY = "aanandi-music-pref";
 const TARGET_VOLUME = 0.55;
 
