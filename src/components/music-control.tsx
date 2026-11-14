@@ -62,7 +62,7 @@ export function MusicControl() {
       {hint && (
         <p className="music-hint" role="status">
           Add your MP3 as{" "}
-          <code>public/audio/songg.mpeg</code>{" "}
+          <code>public/audio/songg.mp3</code>{" "}
           to turn the music on.
         </p>
       )}
