@@ -37,22 +37,10 @@ head: () => ({
       property: "og:type",
       content: "website",
     },
-    {
-      property: "og:image",
-      content: "https://YOUR-DOMAIN/thumbnail.jpg",
-    },
-    {
-      property: "og:image:width",
-      content: "1648",
-    },
-    {
-      property: "og:image:height",
-      content: "900",
-    },
-    {
-      name: "twitter:card",
-      content: "summary_large_image",
-    },
+ { property: "og:image", content: "https://aanandi-invitation.vercel.app/thumbnail.jpg" },
+{ property: "og:image:width", content: "1200" },
+{ property: "og:image:height", content: "675" },
+{ name: "twitter:image", content: "https://aanandi-invitation.vercel.app/thumbnail.jpg" },
     {
       name: "twitter:image",
       content: "https://YOUR-DOMAIN/thumbnail.jpg",
