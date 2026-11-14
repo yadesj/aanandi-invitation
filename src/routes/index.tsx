@@ -39,7 +39,7 @@ head: () => ({
     },
     {
       property: "og:image",
-      content: "https://YOUR-DOMAIN/thumbnail.png",
+      content: "https://YOUR-DOMAIN/thumbnail.jpg",
     },
     {
       property: "og:image:width",
@@ -55,7 +55,7 @@ head: () => ({
     },
     {
       name: "twitter:image",
-      content: "https://YOUR-DOMAIN/thumbnail.png",
+      content: "https://YOUR-DOMAIN/thumbnail.jpg",
     },
   ],
 }),
