@@ -384,9 +384,10 @@ html { scroll-behavior: smooth; }
 }
 
 .aanandi-tagline {
-  margin: .2em 0 0;
-  font: italic 500 calc(var(--logo-fs) * .27)/1.2 var(--font-serif);
-  color: #6b1830;
+  margin: .25em 0 0;
+  font: italic 600 calc(var(--logo-fs) * .3)/1.2 var(--font-serif);
+  color: #641329;
+  text-shadow: 0 1px 4px rgba(255, 239, 205, .55);
 }
 
 .logo-hero.tone-burgundy .aanandi-tagline {
@@ -490,13 +491,12 @@ html { scroll-behavior: smooth; }
 }
 
 .devanagari {
-  margin: 0 0 clamp(6px, 1svh, 10px);
-  color: #68172f;
-  font-family: var(--font-serif);
-  font-size: clamp(14px, 1.6vw, 18px);
+  margin: 0 0 clamp(8px, 1.4svh, 14px);
+  color: #651329;
+  font-size: clamp(15px, 1.8vw, 19px);
   font-weight: 600;
   letter-spacing: .12em;
-  text-shadow: 0 1px 3px rgba(255, 239, 205, .4);
+  text-shadow: 0 1px 4px rgba(255, 239, 205, .65);
 }
 
 .ent-title .logo-hero {
@@ -537,12 +537,12 @@ html { scroll-behavior: smooth; }
 }
 
 .ent-sub {
-  margin: clamp(7px, 1.1svh, 13px) 0 0;
-  font: 500 clamp(15px, 1.9vw, 21px)/1.35 var(--font-serif);
-  letter-spacing: .025em;
-  color: #64152c;
-  text-shadow: 0 1px 3px rgba(255, 239, 205, .4);
+  margin: clamp(12px, 1.8svh, 20px) 0 0;
+  font: 600 clamp(18px, 2.3vw, 25px)/1.4 var(--font-serif);
+  color: #641329;
+  text-shadow: 0 1px 4px rgba(255, 239, 205, .65);
 }
+
 
 /* ── HANGING BRASS BELLS ── */
 .hanging-bell {
