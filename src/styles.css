@@ -1021,10 +1021,12 @@ address { font: normal 24px/1.65 var(--font-serif); margin: 22px 0; } address st
 .closing-copy { font: 400 clamp(21px, 3vw, 28px)/1.55 var(--font-serif); margin: 22px auto 30px; max-width: 560px; }
 .closing-section .invitation-button { color: #f1dc9c; border-color: #d2a94a; } .closing-section .invitation-button:hover { background: rgba(255,230,160,.1); }
 .hosts {
-  font-size: clamp(21px, 5.5vw, 25px);
+  font-size: clamp(14px, 4.2vw, 19px);
   max-width: 100%;
-  padding-inline: 4px;
-  line-height: 1.35;
+  padding-inline: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+  letter-spacing: -0.3px;
 }
 .closing-diyas .diya-vignette { margin: 0; width: 100px; height: 84px; } .closing-diyas .ceremony-art { filter: drop-shadow(0 0 24px rgba(255,190,80,.5)); }
 .page-footer { padding: 22px 5%; display: flex; justify-content: space-between; gap: 10px; border-top: 1px solid #6a1730; background: #2c0612; color: #cdb57a; font-size: 8px; letter-spacing: .2em; } .page-footer[hidden] { display: none; }
