@@ -96,7 +96,7 @@ export function Entrance({ onOpen }: { onOpen: () => void }) {
     const el = root.current; const c = ctx.current;
     if (!el || !c || busy.current || phase !== "ready") return;
     busy.current = true; setPhase("cutting");
-     music.prepareFromGesture();
+     music.startFromGesture();
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       gsap.set(el.querySelectorAll(".ribbon-stage"), { autoAlpha: 0 });
       setPhase("open"); onOpenRef.current(); return;
