@@ -7,7 +7,7 @@ import gsap from "gsap";
  * - React components only *read* this store; re-rendering never touches playback.
  * The audio file lives at public/audio/song.mp3.
  */
-export const MUSIC_SRC = "/audio/songg.mp3";
+export const MUSIC_SRC = "/audio/songg.mpeg";
 const PREF_KEY = "aanandi-music-pref";
 const TARGET_VOLUME = 0.55;
 
