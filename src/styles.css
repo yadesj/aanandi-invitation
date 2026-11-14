@@ -484,12 +484,29 @@ html { scroll-behavior: smooth; }
 .ent-title {
   position: absolute;
   z-index: 5;
-  top: clamp(48px, 7svh, 76px);
-  left: 0;
-  right: 0;
-  padding: 0 14px;
-}
+  top: clamp(76px, 11svh, 112px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90%, 760px);
+  padding: clamp(15px, 2.2vw, 24px) 18px 20px;
 
+  background: linear-gradient(
+    135deg,
+    rgba(255, 246, 222, .34),
+    rgba(247, 226, 184, .20),
+    rgba(255, 246, 222, .30)
+  );
+
+  border: 1px solid rgba(190, 148, 75, .38);
+  border-radius: 4px;
+
+  box-shadow:
+    0 8px 28px rgba(45, 20, 8, .12),
+    inset 0 1px 0 rgba(255,255,255,.35);
+
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
 .devanagari {
   margin: 0 0 clamp(8px, 1.4svh, 14px);
   color: #651329;
