@@ -549,15 +549,15 @@ html { scroll-behavior: smooth; }
 .ent-title .aanandi-tagline {
   margin-top: .22em;
   font: italic 500 calc(var(--logo-fs) * .27)/1.2 var(--font-serif);
-  color: #68172f;
-  text-shadow: 0 1px 3px rgba(255, 239, 205, .4);
+  color: #641329;
+  text-shadow: 0 1px 2px rgba(255,245,220,.5);
 }
 
 .ent-sub {
-  margin: clamp(12px, 1.8svh, 20px) 0 0;
-  font: 600 clamp(18px, 2.3vw, 25px)/1.4 var(--font-serif);
-  color: #641329;
-  text-shadow: 0 1px 4px rgba(255, 239, 205, .65);
+  margin: 12px 0 0;
+  font: 600 clamp(17px, 2vw, 22px)/1.4 var(--font-serif);
+  color: #591126;
+  text-shadow: 0 1px 2px rgba(255,245,220,.5);
 }
 
 
