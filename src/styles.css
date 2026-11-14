@@ -904,7 +904,23 @@ html { scroll-behavior: smooth; }
 .fb-l { left: 12%; } .fb-r { right: 12%; animation-delay: -2.3s; }
 .invocation { font: 600 26px/1.5 var(--font-serif); color: var(--primary); margin: 14px 0 0; }
 .blessings-copy { font: 400 22px/1.5 var(--font-serif); margin: 12px auto; max-width: 470px; }
-.hosts { font-size: 40px; margin: 12px auto; line-height: 1.4; }
+.hosts {
+  width: min(100%, 680px);
+  max-width: 100%;
+  margin: 16px auto;
+  padding-inline: 8px;
+  font-family: var(--font-serif);
+  font-size: clamp(24px, 3.2vw, 34px);
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: var(--primary);
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
 .main-invitation { padding-top: 30px; }
 .ornamental-invitation { position: relative; max-width: 800px; margin: 0 auto; padding: 62px clamp(24px, 8vw, 80px); background: linear-gradient(180deg, #fffaf0, #fbf3de); border: 3px solid var(--primary); box-shadow: var(--paper-shadow), 0 0 0 1px var(--gold), 0 0 0 7px var(--background), 0 0 0 8px var(--gold); outline: 1px solid var(--gold); outline-offset: -10px; }
 .ornament-corner { position: absolute; width: 40px; height: 40px; border-top: 3px double var(--gold); border-left: 3px double var(--gold); }
@@ -1004,7 +1020,12 @@ address { font: normal 24px/1.65 var(--font-serif); margin: 22px 0; } address st
 .closing-section .aanandi-logo { margin: 18px 0 6px; }
 .closing-copy { font: 400 clamp(21px, 3vw, 28px)/1.55 var(--font-serif); margin: 22px auto 30px; max-width: 560px; }
 .closing-section .invitation-button { color: #f1dc9c; border-color: #d2a94a; } .closing-section .invitation-button:hover { background: rgba(255,230,160,.1); }
-.closing-diyas { display: flex; justify-content: center; gap: clamp(120px, 34vw, 380px); margin: 0 auto 16px; position: relative; z-index: 1; }
+.hosts {
+  font-size: clamp(21px, 5.5vw, 25px);
+  max-width: 100%;
+  padding-inline: 4px;
+  line-height: 1.35;
+}
 .closing-diyas .diya-vignette { margin: 0; width: 100px; height: 84px; } .closing-diyas .ceremony-art { filter: drop-shadow(0 0 24px rgba(255,190,80,.5)); }
 .page-footer { padding: 22px 5%; display: flex; justify-content: space-between; gap: 10px; border-top: 1px solid #6a1730; background: #2c0612; color: #cdb57a; font-size: 8px; letter-spacing: .2em; } .page-footer[hidden] { display: none; }
 
