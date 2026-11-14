@@ -913,6 +913,11 @@ html { scroll-behavior: smooth; }
   line-height: 1.35;
   text-align: center;
   white-space: normal;
+  font-family: var(--font-serif);
+font-style: normal;
+font-weight: 600;
+color: var(--primary);
+letter-spacing: 0;
 }
 .main-invitation { padding-top: 30px; }
 .ornamental-invitation { position: relative; max-width: 800px; margin: 0 auto; padding: 62px clamp(24px, 8vw, 80px); background: linear-gradient(180deg, #fffaf0, #fbf3de); border: 3px solid var(--primary); box-shadow: var(--paper-shadow), 0 0 0 1px var(--gold), 0 0 0 7px var(--background), 0 0 0 8px var(--gold); outline: 1px solid var(--gold); outline-offset: -10px; }
