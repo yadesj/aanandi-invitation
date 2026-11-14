@@ -555,7 +555,7 @@ html { scroll-behavior: smooth; }
 
 .ent-sub {
   margin: clamp(12px, 1.6svh, 18px) 0 0;
-  font: 600 clamp(21px, 2.8vw, 30px)/1.4 var(--font-serif);
+  font: 600 clamp(21px, 2.8vw, 38px)/1.4 var(--font-serif);
   color: #641329;
   text-shadow: 0 1px 3px rgba(255,245,220,.6);
 }
