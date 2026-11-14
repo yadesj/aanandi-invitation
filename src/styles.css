@@ -409,13 +409,45 @@ html { scroll-behavior: smooth; }
 
 
 /* ── opening: the decorated entrance ── */
-.entrance { position: relative; height: 100svh; min-height: 620px; overflow: hidden; isolation: isolate; background: #e3d0a8; text-align: center; }
-.entrance:not(.is-ready) .ent-bg, .entrance:not(.is-ready) .ent-title, .entrance:not(.is-ready) .ribbon-stage, .entrance:not(.is-ready) .entrance-action, .entrance:not(.is-ready) .hanging-bell { opacity: 0; }
-.ent-bg-wrap { position: absolute; inset: -3%; }
-.ent-bg, .door-scene { position: absolute; inset: 0; width: 100%; height: 100%; }
-.door-scene { object-fit: cover; object-position: 50% 58%; }
 
+/* ── ENTRANCE BACKGROUND ── */
+.entrance {
+  position: relative;
+  height: 100svh;
+  min-height: 620px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #b99b70;
+  text-align: center;
+}
 
+.entrance:not(.is-ready) .ent-bg,
+.entrance:not(.is-ready) .ent-title,
+.entrance:not(.is-ready) .ribbon-stage,
+.entrance:not(.is-ready) .entrance-action,
+.entrance:not(.is-ready) .hanging-bell {
+  opacity: 0;
+}
+
+.ent-bg-wrap {
+  position: absolute;
+  inset: -3%;
+}
+
+.ent-bg,
+.door-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.door-scene {
+  object-fit: cover;
+  object-position: 50% 58%;
+}
+
+/* ── WARM, NATURAL LIGHT ── */
 .ent-light {
   position: absolute;
   inset: 0;
@@ -423,13 +455,13 @@ html { scroll-behavior: smooth; }
   background:
     radial-gradient(
       ellipse 48% 40% at 50% 42%,
-      rgba(255,220,150,.08),
+      rgba(255, 220, 150, .06),
       transparent 72%
     ),
     linear-gradient(
       180deg,
-      rgba(251,243,222,.20) 0,
-      rgba(251,243,222,.07) 28%,
+      rgba(251, 243, 222, .12) 0%,
+      rgba(251, 243, 222, .04) 28%,
       transparent 48%
     );
 }
@@ -440,50 +472,398 @@ html { scroll-behavior: smooth; }
   inset: -20%;
   background: repeating-conic-gradient(
     from 200deg at 50% -10%,
-    rgba(255,236,170,0) 0 7deg,
-    rgba(255,240,180,.025) 9deg,
-    rgba(255,236,170,0) 12deg
+    rgba(255, 236, 170, 0) 0 7deg,
+    rgba(255, 240, 180, .018) 9deg,
+    rgba(255, 236, 170, 0) 12deg
   );
-  opacity: .3;
+  opacity: .25;
 }
 
-.ent-title { position: absolute; z-index: 5; top: clamp(54px, 9svh, 96px); left: 0; right: 0; padding: 0 14px; }
-.devanagari { margin: 0 0 clamp(6px, 1.4svh, 14px); color: var(--primary); font-size: clamp(13px, 1.6vw, 17px); letter-spacing: .08em; text-shadow: 0 1px 8px rgba(255,246,220,.9); }
-.ent-sub { margin: clamp(8px, 1.6svh, 18px) 0 0; font: 600 clamp(16px, 2.2vw, 23px)/1.4 var(--font-serif); color: var(--primary); text-shadow: 0 1px 10px rgba(255,246,220,.95); }
-.hanging-bell { position: absolute; top: -8px; z-index: 4; width: clamp(30px, 4.6vw, 54px); height: clamp(120px, 25svh, 230px); transform-origin: 50% 0; }
-.hanging-bell img { width: 100%; height: 100%; object-fit: contain; transform-origin: 50% 0; animation: bell-swing 5s ease-in-out infinite; filter: drop-shadow(0 6px 6px rgba(40,10,5,.35)); }
-.bell-left { left: 9%; } .bell-right { right: 9%; } .bell-right img { animation-delay: -2.5s; }
-.ribbon-stage { --rib-h: clamp(40px, 6.4svh, 58px); --knot-w: clamp(128px, 16vw, 212px); --sc-h: clamp(150px, 27svh, 240px); position: absolute; left: 0; right: 0; top: 60%; height: var(--rib-h); margin-top: calc(var(--rib-h) / -2); z-index: 6; }
-.ribbon-half { position: absolute; top: 0; bottom: 0; width: 50%; filter: drop-shadow(0 10px 9px rgba(40,5,15,.38)); }
-.ribbon-left { left: 0; } .ribbon-right { right: 0; }
-.ribbon-face { position: absolute; inset: 0; overflow: hidden; background: linear-gradient(180deg, #7a1230 0%, #c52c4d 16%, #92173a 40%, #4d0a1d 68%, #a3203f 90%, #6b0f27 100%); box-shadow: inset 0 2px 0 #ecd28a, inset 0 -2px 0 #b98a2e; }
-.ribbon-left .ribbon-face { clip-path: polygon(0 0, 100% 0, calc(100% - 13px) 50%, 100% 100%, 0 100%); }
-.ribbon-right .ribbon-face { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 13px 50%); }
-.ribbon-face::after { content: ""; position: absolute; inset: 7px 0; border-top: 1px solid rgba(255,225,200,.28); border-bottom: 1px solid rgba(255,225,200,.18); }
-.ribbon-sheen { position: absolute; inset: 0; background: linear-gradient(100deg, transparent 0, rgba(255,236,226,.5) 50%, transparent 100%) no-repeat; background-size: 22% 100%; background-position: -60% 0; mix-blend-mode: screen; }
-.knot { position: absolute; z-index: 7; pointer-events: none; width: var(--knot-w); height: calc(var(--knot-w) * .856); left: calc(50% - var(--knot-w) / 2); top: calc(50% - var(--knot-w) * .428); }
-.knot img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 8px 6px rgba(40,5,15,.4)); }
-.knot-left { clip-path: inset(-20% 50% -20% -20%); } .knot-right { clip-path: inset(-20% -20% -20% 50%); }
-.knot-seal { position: absolute; left: 50%; top: 50%; width: 30%; margin: -15% 0 0 -15%; }
-.ribbon-hit { position: absolute; z-index: 8; left: 0; right: 0; top: -12px; bottom: -12px; border: 0; background: transparent; cursor: pointer; }
+/* ── MAIN TITLE ── */
+.ent-title {
+  position: absolute;
+  z-index: 5;
+  top: clamp(48px, 7svh, 76px);
+  left: 0;
+  right: 0;
+  padding: 0 14px;
+}
+
+.devanagari {
+  margin: 0 0 clamp(6px, 1svh, 10px);
+  color: #68172f;
+  font-family: var(--font-serif);
+  font-size: clamp(14px, 1.6vw, 18px);
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-shadow: 0 1px 3px rgba(255, 239, 205, .4);
+}
+
+.ent-title .logo-hero {
+  --logo-fs: clamp(48px, 8.5vw, 112px);
+}
+
+.ent-title .aanandi-word {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: .15em;
+  padding-left: .15em;
+  line-height: 1;
+}
+
+.ent-title .aanandi-letter {
+  background: linear-gradient(
+    180deg,
+    #8b2943 0%,
+    #72182f 45%,
+    #4b0c20 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ent-title .tone-burgundy .aanandi-word {
+  filter:
+    drop-shadow(0 1px 0 rgba(239, 211, 150, .65))
+    drop-shadow(0 5px 9px rgba(45, 5, 18, .2));
+}
+
+.ent-title .aanandi-tagline {
+  margin-top: .22em;
+  font: italic 500 calc(var(--logo-fs) * .27)/1.2 var(--font-serif);
+  color: #68172f;
+  text-shadow: 0 1px 3px rgba(255, 239, 205, .4);
+}
+
+.ent-sub {
+  margin: clamp(7px, 1.1svh, 13px) 0 0;
+  font: 500 clamp(15px, 1.9vw, 21px)/1.35 var(--font-serif);
+  letter-spacing: .025em;
+  color: #64152c;
+  text-shadow: 0 1px 3px rgba(255, 239, 205, .4);
+}
+
+/* ── HANGING BRASS BELLS ── */
+.hanging-bell {
+  position: absolute;
+  top: -8px;
+  z-index: 4;
+  width: clamp(30px, 4.6vw, 54px);
+  height: clamp(120px, 25svh, 230px);
+  transform-origin: 50% 0;
+}
+
+.hanging-bell img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform-origin: 50% 0;
+  animation: bell-swing 5s ease-in-out infinite;
+  filter: drop-shadow(0 6px 6px rgba(40, 10, 5, .35));
+}
+
+.bell-left { left: 9%; }
+.bell-right { right: 9%; }
+.bell-right img { animation-delay: -2.5s; }
+
+/* ── BURGUNDY SATIN RIBBON ── */
+.ribbon-stage {
+  --rib-h: clamp(40px, 6.4svh, 58px);
+  --knot-w: clamp(128px, 16vw, 212px);
+  --sc-h: clamp(150px, 27svh, 240px);
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 64%;
+  height: var(--rib-h);
+  margin-top: calc(var(--rib-h) / -2);
+  z-index: 6;
+}
+
+.ribbon-half {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  filter: drop-shadow(0 10px 9px rgba(40, 5, 15, .38));
+}
+
+.ribbon-left { left: 0; }
+.ribbon-right { right: 0; }
+
+.ribbon-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    #641329 0%,
+    #8b1c3b 16%,
+    #70152f 40%,
+    #3c0819 68%,
+    #74152f 90%,
+    #4d0c21 100%
+  );
+  box-shadow:
+    inset 0 2px 0 #e8ce8a,
+    inset 0 -2px 0 #a77b32;
+}
+
+.ribbon-left .ribbon-face {
+  clip-path: polygon(
+    0 0, 100% 0,
+    calc(100% - 13px) 50%,
+    100% 100%, 0 100%
+  );
+}
+
+.ribbon-right .ribbon-face {
+  clip-path: polygon(
+    0 0, 100% 0, 100% 100%,
+    0 100%, 13px 50%
+  );
+}
+
+.ribbon-face::after {
+  content: "";
+  position: absolute;
+  inset: 7px 0;
+  border-top: 1px solid rgba(255, 225, 200, .25);
+  border-bottom: 1px solid rgba(255, 225, 200, .16);
+}
+
+.ribbon-sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 0,
+    rgba(255, 236, 226, .35) 50%,
+    transparent 100%
+  ) no-repeat;
+  background-size: 22% 100%;
+  background-position: -60% 0;
+  mix-blend-mode: screen;
+}
+
+/* ── CENTRAL BOW AND SEAL ── */
+.knot {
+  position: absolute;
+  z-index: 7;
+  pointer-events: none;
+  width: var(--knot-w);
+  height: calc(var(--knot-w) * .856);
+  left: calc(50% - var(--knot-w) / 2);
+  top: calc(50% - var(--knot-w) * .428);
+}
+
+.knot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 6px rgba(40, 5, 15, .4));
+}
+
+.knot-left { clip-path: inset(-20% 50% -20% -20%); }
+.knot-right { clip-path: inset(-20% -20% -20% 50%); }
+
+.knot-seal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 30%;
+  margin: -15% 0 0 -15%;
+}
+
+/* ── RIBBON CUTTING ANIMATION ELEMENTS ── */
+.ribbon-hit {
+  position: absolute;
+  z-index: 8;
+  left: 0;
+  right: 0;
+  top: -12px;
+  bottom: -12px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
 .ribbon-hit:disabled { cursor: default; }
-.ribbon-hit:focus-visible { outline: 2px solid #fff3c0; outline-offset: 2px; }
-.ribbon-stage:has(.ribbon-hit:hover:not(:disabled)) .ribbon-face { filter: brightness(1.12) saturate(1.1); }
-.golden-scissors { position: absolute; left: 50%; top: 50%; z-index: 9; height: var(--sc-h); width: calc(var(--sc-h) * .4667); overflow: visible; pointer-events: none; visibility: hidden; filter: drop-shadow(0 10px 8px rgba(40,5,15,.45)); }
-.cut-flash, .screen-flash, .gold-wash { opacity: 0; visibility: hidden; pointer-events: none; }
-.cut-flash { position: absolute; z-index: 10; left: 50%; top: 50%; width: 130px; height: 130px; margin: -65px 0 0 -65px; border-radius: 50%; background: radial-gradient(circle, #fff 0, rgba(255,240,180,.95) 22%, rgba(255,196,80,.45) 48%, transparent 70%); mix-blend-mode: screen; }
-.screen-flash { position: absolute; inset: 0; z-index: 12; background: radial-gradient(circle at 50% 60%, #fffbe8, rgba(255,226,140,.6) 45%, transparent 80%); }
-.gold-wash { position: absolute; inset: 0; z-index: 14; background: radial-gradient(circle at 50% 55%, #fff8dc 0, #f3dc96 45%, #d8ac45 100%); }
-.entrance-action { position: absolute; z-index: 8; left: 0; right: 0; bottom: clamp(26px, 7svh, 66px); }
-.entrance-action .small-caption { margin-top: 14px; color: #4a2a14; text-shadow: 0 1px 8px rgba(255,245,220,.95); }
-.ent-foreground { position: absolute; inset: 0; z-index: 7; pointer-events: none; }
-.ent-foreground .botanicals img { filter: blur(2.4px); }
-.ceremonial-button { border: 1px solid #e0bd6a; background: var(--ceremonial-gradient); color: var(--primary-foreground); border-radius: 3px; box-shadow: 0 4px 0 color-mix(in oklab, var(--gold) 75%, var(--primary)), 0 10px 26px rgba(40,5,15,.4); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; height: 50px; padding: 0 32px; transition: transform .25s, box-shadow .25s; }
-.ceremonial-button:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--gold), 0 14px 28px rgba(40,5,15,.4); }
-.ceremonial-button:active { transform: translateY(2px); }
-.eyebrow { font-size: 10px; font-weight: 500; color: var(--muted-foreground); line-height: 1.8; letter-spacing: .2em; }
-.small-caption { font-size: 8px; color: var(--muted-foreground); margin-top: 20px; letter-spacing: .2em; text-transform: uppercase; }
-.calligraphy { font-family: var(--font-script); font-weight: 400; color: var(--gold); }
+
+.ribbon-hit:focus-visible {
+  outline: 2px solid #fff3c0;
+  outline-offset: 2px;
+}
+
+.ribbon-stage:has(.ribbon-hit:hover:not(:disabled)) .ribbon-face {
+  filter: brightness(1.08) saturate(1.08);
+}
+
+.golden-scissors {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 9;
+  height: var(--sc-h);
+  width: calc(var(--sc-h) * .4667);
+  overflow: visible;
+  pointer-events: none;
+  visibility: hidden;
+  filter: drop-shadow(0 10px 8px rgba(40, 5, 15, .45));
+}
+
+.cut-flash,
+.screen-flash,
+.gold-wash {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.cut-flash {
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  top: 50%;
+  width: 130px;
+  height: 130px;
+  margin: -65px 0 0 -65px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #fff 0,
+    rgba(255, 240, 180, .95) 22%,
+    rgba(255, 196, 80, .45) 48%,
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+}
+
+.screen-flash {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  background: radial-gradient(
+    circle at 50% 60%,
+    #fffbe8,
+    rgba(255, 226, 140, .6) 45%,
+    transparent 80%
+  );
+}
+
+.gold-wash {
+  position: absolute;
+  inset: 0;
+  z-index: 14;
+  background: radial-gradient(
+    circle at 50% 55%,
+    #fff8dc 0,
+    #f3dc96 45%,
+    #d8ac45 100%
+  );
+}
+
+/* ── BOTTOM ACTION ── */
+.entrance-action {
+  position: absolute;
+  z-index: 8;
+  left: 0;
+  right: 0;
+  bottom: clamp(26px, 7svh, 66px);
+}
+
+.entrance-action .small-caption {
+  margin-top: 14px;
+  color: #4a2a14;
+  text-shadow: 0 1px 4px rgba(255, 245, 220, .7);
+}
+
+.ent-foreground {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  pointer-events: none;
+}
+
+.ent-foreground .botanicals img {
+  filter: blur(2.4px);
+}
+
+/* ── CEREMONIAL BUTTON ── */
+.ceremonial-button {
+  border: 1px solid #e0bd6a;
+  background: linear-gradient(140deg, #781a35, #460b1e);
+  color: #f8edcf;
+  border-radius: 3px;
+  box-shadow:
+    0 4px 0 #8b672c,
+    0 10px 26px rgba(40, 5, 15, .4);
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  height: 50px;
+  padding: 0 32px;
+  transition: transform .25s, box-shadow .25s;
+}
+
+.ceremonial-button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 0 #a77b32,
+    0 14px 28px rgba(40, 5, 15, .4);
+}
+
+.ceremonial-button:active {
+  transform: translateY(2px);
+}
+
+/* ── CAPTIONS ── */
+.eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  line-height: 1.8;
+  letter-spacing: .2em;
+}
+
+.small-caption {
+  font-size: 8px;
+  color: var(--muted-foreground);
+  margin-top: 20px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.calligraphy {
+  font-family: var(--font-script);
+  font-weight: 400;
+  color: var(--gold);
+}
+
+/* ── MOBILE ENTRANCE ADJUSTMENTS ── */
+@media (max-width: 640px) {
+  .ent-title {
+    top: 60px;
+  }
+
+  .ent-title .logo-hero {
+    --logo-fs: clamp(44px, 11vw, 68px);
+  }
+
+  .ent-sub {
+    font-size: 15px;
+  }
+
+  .ribbon-stage {
+    top: 61%;
+  }
+
+  .bell-left { left: 4%; }
+  .bell-right { right: 4%; }
+}
+
 
 /* ── shared section styling ── */
 .botanicals { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
