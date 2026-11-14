@@ -60,7 +60,7 @@ export function PetalField() {
     const rose = petalSprite(() => {}), marigold = petalSprite(() => {});
     fromImage(roseImage, rose); fromImage(marigoldImage, marigold);
     const sprites = [rose, marigold, fragment("#c2203f", "#7a0f2b"), fragment("#ffb52e", "#e07a10"), fragment("#f4a6b4", "#d9607a"), fragment("#ffd36b", "#f29b1d")];
-    const pool = isSmall() ? 22 : 46;
+    const pool = isSmall() ? 15 : 32;
     const petals: Petal[] = Array.from({ length: pool }, (_, i) => {
       const { w, h } = size();
       return { x: rand(0, w), y: rand(-h, h), size: rand(11, 27), speed: rand(24, 58), sway: rand(0, 6.28), swayAmp: rand(10, 34), flutter: rand(0, 6.28), angle: rand(0, 6.28), spin: rand(-1.1, 1.1), alpha: rand(.55, .95), sprite: i % sprites.length, on: true };
