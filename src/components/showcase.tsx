@@ -16,9 +16,24 @@ const P = {
 const GALLERY: Photo[] = [P.exterior, P.street, P.groundIso, P.firstIso, P.secondIso];
 
 const FLOORS = [
-  { id: "ground", label: "Ground Floor", note: "Living room, kitchen & dining, a bedroom, puja cabinet and covered parking.", plan: { src: "/brochure/ground-plan.jpg", title: "Ground floor plan", caption: "Ground floor plan", w: 470, h: 750 }, iso: P.groundIso },
-  { id: "first", label: "First Floor", note: "Two bedrooms with attached toilets, a balcony and an open balcony.", plan: { src: "/brochure/first-plan.jpg", title: "First floor plan", caption: "First floor plan", w: 520, h: 800 }, iso: P.firstIso },
-  { id: "second", label: "Second Floor", note: "A bedroom with attached toilet and a generous open terrace.", plan: { src: "/brochure/second-plan.jpg", title: "Second floor plan", caption: "Second floor plan", w: 520, h: 915 }, iso: P.secondIso },
+  {
+    id: "ground",
+    label: "Ground Floor",
+    note: "Living room, kitchen & dining, a bedroom, puja cabinet and covered parking.",
+    iso: P.groundIso,
+  },
+  {
+    id: "first",
+    label: "First Floor",
+    note: "Two bedrooms with attached toilets, a balcony and an open balcony.",
+    iso: P.firstIso,
+  },
+  {
+    id: "second",
+    label: "Second Floor",
+    note: "A bedroom with attached toilet and a generous open terrace.",
+    iso: P.secondIso,
+  },
 ];
 
 /* ───────────── Zoom + pan viewer (wheel with Ctrl/⌘, pinch, drag, double-tap, buttons, full screen) ───────────── */
@@ -152,7 +167,9 @@ export function Showcase() {
         {FLOORS.map(f => (
           <Tabs.Content key={f.id} value={f.id} className="tab-panel">
             <p className="floor-note">{f.note}</p>
-            <div className="floor-grid"><ZoomPan photo={f.plan} label={`${f.label} plan`} /><ZoomPan photo={f.iso} label={`${f.label} — isometric view`} /></div>
+           <div className="floor-grid floor-photo-only">
+  <ZoomPan photo={f.iso} label={`${f.label} — isometric view`} />
+</div>
             <p className="zoom-hint">Pinch, double-tap or use the buttons to zoom · Ctrl + scroll on desktop · drag to pan</p>
           </Tabs.Content>
         ))}
