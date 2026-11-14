@@ -15,11 +15,11 @@ export type MusicState = {
 };
 
 type Pref = { muted: boolean; userPaused: boolean };
+
 type Holder = {
   audio: HTMLAudioElement | null;
   state: MusicState;
   listeners: Set<() => void>;
-  armed: boolean;
 };
 
 type W = Window & { __aanandiMusic?: Holder };
@@ -59,7 +59,6 @@ function holder(): Holder | null {
     w.__aanandiMusic = {
       audio: null,
       listeners: new Set(),
-      armed: false,
       state: { ...SERVER_STATE, ...pref },
     };
   }
@@ -80,7 +79,7 @@ function ensureAudio(): HTMLAudioElement | null {
   if (!h) return null;
   if (h.audio) return h.audio;
 
-  const a = new Audio();
+  const a = new Audio(MUSIC_SRC);
   a.loop = true;
   a.preload = "auto";
   a.volume = 0;
@@ -88,11 +87,14 @@ function ensureAudio(): HTMLAudioElement | null {
 
   a.addEventListener("canplay", () => set({ file: "ready" }));
   a.addEventListener("loadedmetadata", () => set({ file: "ready" }));
-  a.addEventListener("error", () => set({ file: "missing", playing: false }));
-  a.addEventListener("playing", () => set({ playing: true, blocked: false }));
+  a.addEventListener("error", () =>
+    set({ file: "missing", playing: false })
+  );
+  a.addEventListener("playing", () =>
+    set({ playing: true, blocked: false })
+  );
   a.addEventListener("pause", () => set({ playing: false }));
 
-  a.src = MUSIC_SRC;
   h.audio = a;
   return a;
 }
@@ -106,17 +108,27 @@ function fadeIn(a: HTMLAudioElement) {
   });
 }
 
-async function play(): Promise<void> {
+function playFromUserGesture() {
+  const h = holder();
   const a = ensureAudio();
-  if (!a) return;
 
-  try {
-    await a.play();
-    fadeIn(a);
-  } catch (error) {
-    if ((error as DOMException)?.name === "NotAllowedError") {
-      set({ blocked: true });
-    }
+  if (!h || !a || h.state.userPaused || h.state.muted) return;
+
+  gsap.killTweensOf(a);
+  a.volume = 0;
+
+  // Call play immediately, directly from the user's click.
+  const promise = a.play();
+
+  if (promise) {
+    promise.then(() => {
+      set({ blocked: false });
+      fadeIn(a);
+    }).catch((error) => {
+      if ((error as DOMException)?.name === "NotAllowedError") {
+        set({ blocked: true });
+      }
+    });
   }
 }
 
@@ -125,47 +137,19 @@ export const music = {
     ensureAudio();
   },
 
-  // Called directly by the ribbon click. Starts silently to satisfy browser gesture rules.
   prepareFromGesture() {
-    const h = holder();
-    if (!h || h.state.userPaused || h.state.muted) return;
-
-    const a = ensureAudio();
-    if (!a || !a.paused) return;
-
-    a.volume = 0;
-    void a.play().then(() => {
-      gsap.killTweensOf(a);
-      a.volume = 0;
-    }).catch((error) => {
-      if ((error as DOMException)?.name === "NotAllowedError") {
-        set({ blocked: true });
-      }
-    });
+    // No audio preparation needed.
   },
 
-  // Called when the ribbon-cutting reveal reaches its finish.
   revealFromGesture() {
-    const h = holder();
-    const a = ensureAudio();
-    if (!h || !a || h.state.userPaused || h.state.muted) return;
-
-    if (a.paused) {
-      void play();
-    } else {
-      fadeIn(a);
-    }
+    playFromUserGesture();
   },
 
   startFromGesture() {
-    const h = holder();
-    if (!h || h.state.userPaused || h.state.muted) return;
-    void play();
+    playFromUserGesture();
   },
 
-  armFirstInteraction() {
-    // Deliberately disabled: music must wait for ribbon cutting.
-  },
+  armFirstInteraction() {},
 
   togglePlay() {
     const h = holder();
@@ -185,7 +169,7 @@ export const music = {
     } else {
       set({ userPaused: false });
       writePref({ muted: h.state.muted, userPaused: false });
-      void play();
+      playFromUserGesture();
     }
   },
 
@@ -196,6 +180,7 @@ export const music = {
 
     const muted = !h.state.muted;
     a.muted = muted;
+
     set({ muted });
     writePref({ muted, userPaused: h.state.userPaused });
   },
@@ -206,9 +191,7 @@ function subscribe(listener: () => void) {
   if (!h) return () => {};
 
   h.listeners.add(listener);
-  return () => {
-    h.listeners.delete(listener);
-  };
+  return () => h.listeners.delete(listener);
 }
 
 export function useMusic(): MusicState {
