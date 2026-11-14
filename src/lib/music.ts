@@ -1,7 +1,7 @@
 
 import { useSyncExternalStore } from "react";
 
-export const MUSIC_SRC = "/audio/songg.mpeg";
+export const MUSIC_SRC = "/audio/songg.mp3";
 const PREF_KEY = "aanandi-music-pref";
 const TARGET_VOLUME = 0.55;
 
