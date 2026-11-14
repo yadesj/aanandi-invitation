@@ -142,7 +142,7 @@ function Index() {
 
       <Reveal className="schedule-section" fx={.7}><p className="eyebrow">THE AUSPICIOUS DAY</p><h2>A celebration of blessings</h2><Divider /><div className="ceremony-schedule">{EVENT.schedule.map((event, i) => <article className="schedule-event" key={event.title}><span className="event-number">0{i + 1}</span><Artwork kind={event.asset} /><p className="event-time">{event.time}</p><h3>{event.title}</h3><p className="event-note">{event.note}</p></article>)}</div><p className="schedule-date"><CalendarDays size={15} />{EVENT.date}</p></Reveal>
 
-      <Reveal className="countdown-section" fx={1.25}><p className="eyebrow">EVERY MOMENT BRINGS US CLOSER</p><h2 className="calligraphy">Until our new beginning</h2><Countdown /><Diya /></Reveal>
+    
 
       <Showcase />
 
