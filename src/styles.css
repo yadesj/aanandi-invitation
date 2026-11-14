@@ -1202,6 +1202,13 @@ address { font: normal 24px/1.65 var(--font-serif); margin: 22px 0; } address st
 }
 
   .showcase-sub { font-size: 32px; } .tab-trigger { font-size: 10px; letter-spacing: .12em; padding: 12px 8px; } .gallery { grid-template-columns: repeat(2, 1fr); } .exterior-hero { aspect-ratio: 4 / 3; } .floor-note { font-size: 19px; }
-  .map-frame iframe { height: 230px; } .invitation-button, .botanical-button { padding: 0 15px; font-size: 8px; } .family-names { font-size: 26px; } .closing-copy { font-size: 21px; } .closing-diyas { gap: 130px; } .page-footer { font-size: 6px; letter-spacing: .1em; }
+  .map-frame iframe { height: 230px; } .invitation-button, .botanical-button { padding: 0 15px; font-size: 8px; } .family-names { font-size: 26px; } .closing-copy { font-size: 21px; } ..closing-diyas {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: min(100%, 360px);
+  gap: 0;
+  padding-inline: 8px;
+} .page-footer { font-size: 6px; letter-spacing: .1em; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; } .invitation-section { opacity: 1 !important; transform: none !important; } }
