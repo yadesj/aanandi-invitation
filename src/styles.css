@@ -193,24 +193,137 @@ html { scroll-behavior: smooth; }
 .monogram { font: 600 28px/1 var(--font-display); color: var(--primary); text-decoration: none; border: 1px solid var(--gold); width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; background: color-mix(in oklab, var(--card) 70%, transparent); backdrop-filter: blur(4px); }
 .masthead-caption { font-size: 9px; letter-spacing: .2em; color: var(--primary); text-shadow: 0 1px 6px rgba(255,246,220,.9); }
 .masthead-share { color: var(--primary); background: color-mix(in oklab, var(--card) 60%, transparent); border-radius: 50%; }
-.music-dock { position: fixed; z-index: 70; top: calc(10px + env(safe-area-inset-top, 0px)); right: 12px; display: flex; align-items: center; gap: 8px; }
-.music-button, .music-mute { position: relative; display: grid; place-items: center; border-radius: 50%; color: #f3dfa2; cursor: pointer; background: radial-gradient(circle at 35% 30%, #7a1a35, #3a0a18 75%); border: 2px solid #d2a94a; box-shadow: 0 0 0 3px rgba(185,138,46,.28), 0 6px 18px rgba(40,5,15,.4); transition: transform .2s, box-shadow .3s; }
-.music-button { width: 48px; height: 48px; } .music-mute { width: 34px; height: 34px; border-width: 1.5px; }
-.music-button:hover, .music-mute:hover { transform: translateY(-1px) scale(1.04); }
-.music-button:focus-visible, .music-mute:focus-visible { outline: 2px solid #fff3c0; outline-offset: 3px; }
-.music-button.is-playing { animation: music-glow 2.2s ease-in-out infinite alternate; }
-.music-button.is-missing { opacity: .8; }
-.music-dot { position: absolute; top: 1px; right: 1px; width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid #d2a94a; background: #3a0a18; }
-.music-dot[data-state="on"] { background: #ffe27a; box-shadow: 0 0 8px 2px rgba(255,214,90,.9); }
-.music-dot[data-state="missing"] { background: #b3402a; }
-.music-bars { position: absolute; bottom: 7px; display: flex; gap: 2px; align-items: flex-end; height: 7px; }
-.music-bars i { width: 2px; background: #ffe9a0; border-radius: 1px; animation: eq .9s ease-in-out infinite alternate; }
-.music-bars i:nth-child(2) { animation-delay: -.3s; } .music-bars i:nth-child(3) { animation-delay: -.6s; }
-.music-slash { position: absolute; width: 60%; height: 2px; background: #f3dfa2; transform: rotate(-45deg); border-radius: 2px; }
-.music-hint { position: absolute; top: 100%; right: 0; margin: 12px 0 0; width: 236px; padding: 10px 12px; font-size: 12px; line-height: 1.5; background: var(--card); color: var(--foreground); border: 1px solid var(--gold); box-shadow: var(--paper-shadow); }
-.music-hint code { font-size: 11px; color: var(--primary); word-break: break-all; }
-@keyframes music-glow { from { box-shadow: 0 0 0 3px rgba(185,138,46,.3), 0 0 10px 2px rgba(255,214,100,.35); } to { box-shadow: 0 0 0 5px rgba(185,138,46,.2), 0 0 26px 7px rgba(255,214,100,.7); } }
-@keyframes eq { from { height: 2px; } to { height: 7px; } }
+
+.music-dock {
+  position: fixed;
+  z-index: 70;
+  top: calc(10px + env(safe-area-inset-top, 0px));
+  right: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.music-button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: #f3dfa2;
+  cursor: pointer;
+  background: radial-gradient(circle at 35% 30%, #7a1a35, #3a0a18 75%);
+  border: 2px solid #d2a94a;
+  box-shadow:
+    0 0 0 3px rgba(185,138,46,.28),
+    0 6px 18px rgba(40,5,15,.4);
+  transition: transform .2s, box-shadow .3s;
+}
+
+.music-button:hover {
+  transform: translateY(-1px) scale(1.04);
+}
+
+.music-button:focus-visible {
+  outline: 2px solid #fff3c0;
+  outline-offset: 3px;
+}
+
+.music-button.is-playing {
+  animation: music-glow 2.2s ease-in-out infinite alternate;
+}
+
+.music-button.is-missing {
+  opacity: .8;
+}
+
+.music-dot {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid #d2a94a;
+  background: #3a0a18;
+}
+
+.music-dot[data-state="on"] {
+  background: #ffe27a;
+  box-shadow: 0 0 8px 2px rgba(255,214,90,.9);
+}
+
+.music-dot[data-state="missing"] {
+  background: #b3402a;
+}
+
+.music-bars {
+  position: absolute;
+  bottom: 7px;
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+  height: 7px;
+}
+
+.music-bars i {
+  width: 2px;
+  background: #ffe9a0;
+  border-radius: 1px;
+  animation: eq .9s ease-in-out infinite alternate;
+}
+
+.music-bars i:nth-child(2) {
+  animation-delay: -.3s;
+}
+
+.music-bars i:nth-child(3) {
+  animation-delay: -.6s;
+}
+
+.music-slash {
+  position: absolute;
+  width: 60%;
+  height: 2px;
+  background: #f3dfa2;
+  transform: rotate(-45deg);
+  border-radius: 2px;
+}
+
+.music-hint {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin: 12px 0 0;
+  width: 236px;
+  padding: 10px 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  background: var(--card);
+  color: var(--foreground);
+  border: 1px solid var(--gold);
+  box-shadow: var(--paper-shadow);
+}
+
+.music-hint code {
+  font-size: 11px;
+  color: var(--primary);
+  word-break: break-all;
+}
+
+@keyframes music-glow {
+  from {
+    box-shadow: 0 0 0 3px rgba(185,138,46,.3), 0 0 10px 2px rgba(255,214,100,.35);
+  }
+  to {
+    box-shadow: 0 0 0 5px rgba(185,138,46,.2), 0 0 26px 7px rgba(255,214,100,.7);
+  }
+}
+
+@keyframes eq {
+  from { height: 2px; }
+  to { height: 7px; }
+}
 
 /* ── AANANDI wordmark ── */
 .aanandi-logo { display: flex; flex-direction: column; align-items: center; gap: .3em; --logo-fs: 56px; }
