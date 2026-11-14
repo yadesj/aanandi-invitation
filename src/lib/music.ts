@@ -1,6 +1,5 @@
 
 import { useSyncExternalStore } from "react";
-import gsap from "gsap";
 
 export const MUSIC_SRC = "/audio/songg.mpeg";
 const PREF_KEY = "aanandi-music-pref";
@@ -82,7 +81,7 @@ function ensureAudio(): HTMLAudioElement | null {
   const a = new Audio(MUSIC_SRC);
   a.loop = true;
   a.preload = "auto";
-  a.volume = 0;
+  a.volume = TARGET_VOLUME;
   a.muted = h.state.muted;
 
   a.addEventListener("canplay", () => set({ file: "ready" }));
@@ -99,37 +98,22 @@ function ensureAudio(): HTMLAudioElement | null {
   return a;
 }
 
-function fadeIn(a: HTMLAudioElement) {
-  gsap.killTweensOf(a);
-  gsap.to(a, {
-    volume: TARGET_VOLUME,
-    duration: 2.2,
-    ease: "power1.out",
-  });
-}
-
-function playFromUserGesture() {
+function playFromGesture() {
   const h = holder();
   const a = ensureAudio();
 
   if (!h || !a || h.state.userPaused || h.state.muted) return;
 
-  gsap.killTweensOf(a);
-  a.volume = 0;
+  // Start immediately from the beginning.
+  a.currentTime = 0;
 
-  // Call play immediately, directly from the user's click.
   const promise = a.play();
 
-  if (promise) {
-    promise.then(() => {
-      set({ blocked: false });
-      fadeIn(a);
-    }).catch((error) => {
-      if ((error as DOMException)?.name === "NotAllowedError") {
-        set({ blocked: true });
-      }
-    });
-  }
+  promise?.catch((error) => {
+    if ((error as DOMException)?.name === "NotAllowedError") {
+      set({ blocked: true });
+    }
+  });
 }
 
 export const music = {
@@ -137,17 +121,13 @@ export const music = {
     ensureAudio();
   },
 
-  prepareFromGesture() {
-    // No audio preparation needed.
-  },
-
-  revealFromGesture() {
-    playFromUserGesture();
-  },
-
   startFromGesture() {
-    playFromUserGesture();
+    playFromGesture();
   },
+
+  prepareFromGesture() {},
+
+  revealFromGesture() {},
 
   armFirstInteraction() {},
 
@@ -156,20 +136,20 @@ export const music = {
     const a = ensureAudio();
     if (!h || !a) return;
 
-    if (h.state.playing) {
+    if (!a.paused) {
+      a.pause();
       set({ userPaused: true });
       writePref({ muted: h.state.muted, userPaused: true });
-
-      gsap.killTweensOf(a);
-      gsap.to(a, {
-        volume: 0,
-        duration: 0.35,
-        onComplete: () => a.pause(),
-      });
     } else {
       set({ userPaused: false });
       writePref({ muted: h.state.muted, userPaused: false });
-      playFromUserGesture();
+
+      const promise = a.play();
+      promise?.catch((error) => {
+        if ((error as DOMException)?.name === "NotAllowedError") {
+          set({ blocked: true });
+        }
+      });
     }
   },
 
