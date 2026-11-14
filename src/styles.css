@@ -326,19 +326,87 @@ html { scroll-behavior: smooth; }
 }
 
 /* ── AANANDI wordmark ── */
-.aanandi-logo { display: flex; flex-direction: column; align-items: center; gap: .3em; --logo-fs: 56px; }
-.logo-hero { --logo-fs: clamp(50px, 11.5vw, 138px); } .logo-lg { --logo-fs: clamp(44px, 9.4vw, 96px); } .logo-md { --logo-fs: clamp(38px, 7vw, 66px); } .logo-sm { --logo-fs: 30px; }
-.aanandi-word { margin: 0; font: 600 var(--logo-fs)/1.05 var(--font-display); letter-spacing: .13em; padding-left: .13em; white-space: nowrap; perspective: 600px; }
-.aanandi-letter { display: inline-block; background: var(--burg-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.tone-burgundy .aanandi-word { filter: drop-shadow(0 1px 0 rgba(236,217,162,.95)) drop-shadow(0 8px 14px rgba(90,18,38,.28)); }
-.tone-gold .aanandi-letter { background-image: var(--gold-grad); }
-.tone-gold .aanandi-word { filter: drop-shadow(0 0 18px rgba(255,205,100,.45)) drop-shadow(0 3px 3px rgba(20,2,8,.6)); }
-.logo-flourish { width: clamp(150px, calc(var(--logo-fs) * 3.4), 340px); height: auto; color: var(--gold); overflow: visible; }
-.tone-gold .logo-flourish { color: #e9cf80; }
-.aanandi-tagline { margin: .25em 0 0; font: italic 600 calc(var(--logo-fs) * .3)/1.2 var(--font-serif); color: var(--gold-deep); }
-.logo-hero.tone-burgundy .aanandi-tagline { color: var(--primary); text-shadow: 0 0 14px rgba(255,246,220,1), 0 0 4px rgba(255,246,220,.9); }
-.tone-gold .aanandi-tagline { color: #ecd9a2; }
-.logo-sm .aanandi-tagline { font-size: 18px; }
+
+/* ── AANANDI wordmark ── */
+.aanandi-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .24em;
+  --logo-fs: 56px;
+}
+
+.logo-hero { --logo-fs: clamp(50px, 11.5vw, 138px); }
+.logo-lg { --logo-fs: clamp(44px, 9.4vw, 96px); }
+.logo-md { --logo-fs: clamp(38px, 7vw, 66px); }
+.logo-sm { --logo-fs: 30px; }
+
+.aanandi-word {
+  margin: 0;
+  font: 600 var(--logo-fs)/1.05 var(--font-serif);
+  letter-spacing: .15em;
+  padding-left: .15em;
+  white-space: nowrap;
+  perspective: 600px;
+}
+
+.aanandi-letter {
+  display: inline-block;
+  background: var(--burg-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.tone-burgundy .aanandi-word {
+  filter:
+    drop-shadow(0 1px 0 rgba(236,217,162,.65))
+    drop-shadow(0 5px 10px rgba(45,5,18,.22));
+}
+
+.tone-gold .aanandi-letter {
+  background-image: var(--gold-grad);
+}
+
+.tone-gold .aanandi-word {
+  filter: drop-shadow(0 3px 5px rgba(20,2,8,.45));
+}
+
+.logo-flourish {
+  width: clamp(150px, calc(var(--logo-fs) * 3.4), 340px);
+  height: auto;
+  color: var(--gold);
+  overflow: visible;
+}
+
+.tone-gold .logo-flourish {
+  color: #e9cf80;
+}
+
+.aanandi-tagline {
+  margin: .2em 0 0;
+  font: italic 500 calc(var(--logo-fs) * .27)/1.2 var(--font-serif);
+  color: #6b1830;
+}
+
+.logo-hero.tone-burgundy .aanandi-tagline {
+  color: #6b1830;
+  text-shadow: 0 1px 3px rgba(255,239,205,.35);
+}
+
+.tone-gold .aanandi-tagline {
+  color: #ecd9a2;
+}
+
+.logo-sm .aanandi-tagline {
+  font-size: 18px;
+}
+
+/* Entrance-specific title sizing */
+.ent-title .logo-hero {
+  --logo-fs: clamp(48px, 8.5vw, 112px);
+}
+
 
 /* ── opening: the decorated entrance ── */
 .entrance { position: relative; height: 100svh; min-height: 620px; overflow: hidden; isolation: isolate; background: #e3d0a8; text-align: center; }
@@ -347,22 +415,22 @@ html { scroll-behavior: smooth; }
 .ent-bg, .door-scene { position: absolute; inset: 0; width: 100%; height: 100%; }
 .door-scene { object-fit: cover; object-position: 50% 58%; }
 
+
 .ent-light {
   position: absolute;
   inset: 0;
   pointer-events: none;
-
   background:
     radial-gradient(
-      ellipse 55% 45% at 50% 50%,
-      rgba(255,232,170,.20),
-      transparent 70%
+      ellipse 48% 40% at 50% 42%,
+      rgba(255,220,150,.08),
+      transparent 72%
     ),
     linear-gradient(
       180deg,
-      rgba(251,243,222,.48) 0,
-      rgba(251,243,222,.18) 30%,
-      transparent 46%
+      rgba(251,243,222,.20) 0,
+      rgba(251,243,222,.07) 28%,
+      transparent 48%
     );
 }
 
@@ -370,15 +438,13 @@ html { scroll-behavior: smooth; }
   content: "";
   position: absolute;
   inset: -20%;
-
   background: repeating-conic-gradient(
     from 200deg at 50% -10%,
     rgba(255,236,170,0) 0 7deg,
-    rgba(255,240,180,.055) 9deg,
+    rgba(255,240,180,.025) 9deg,
     rgba(255,236,170,0) 12deg
   );
-
-  opacity: .5;
+  opacity: .3;
 }
 
 .ent-title { position: absolute; z-index: 5; top: clamp(54px, 9svh, 96px); left: 0; right: 0; padding: 0 14px; }
