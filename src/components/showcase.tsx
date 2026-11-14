@@ -135,7 +135,7 @@ export function Showcase() {
   const [lightbox, setLightbox] = useState<number | null>(null);
   return (
     <section id="explore" className="invitation-section showcase-section" data-fx=".5">
-      <AanandiLogo size="sm" as="p" tagline={false} />
+      
       <h2 className="showcase-title">Explore AANANDI</h2>
       <p className="calligraphy showcase-sub">A Glimpse of Our New Home</p>
       <Tabs.Root defaultValue="exterior" className="showcase-tabs">
