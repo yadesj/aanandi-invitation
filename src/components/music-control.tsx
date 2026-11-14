@@ -9,7 +9,7 @@ export function MusicControl() {
 
   useEffect(() => {
     music.init();
-    music.armFirstInteraction();
+    
   }, []);
 
   useEffect(() => {
