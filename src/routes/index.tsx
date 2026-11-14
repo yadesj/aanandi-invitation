@@ -29,11 +29,48 @@ function Reveal({ children, className = "", id, fx: level }: { children: ReactNo
   return <motion.section id={id} data-fx={level} className={`invitation-section ${className}`} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .12 }} transition={{ duration: .8 }}>{children}</motion.section>;
 }
 
+
 function Countdown() {
   const [time, setTime] = useState<number[] | null>(null);
-  useEffect(() => { const update = () => setTime(getCountdown(Date.now())); update(); const interval = setInterval(update, 1000); return () => clearInterval(interval); }, []);
-  return <div className="countdown-grid" role="timer" aria-label="Countdown to November 27, 2026"><div className="countdown-inner">{["Days", "Hours", "Minutes", "Seconds"].map((label, i) => <div key={label} className="countdown-unit"><span className="countdown-number">{time ? String(time[i]).padStart(2, "0") : "—"}</span><span className="eyebrow">{label}</span></div>)}</div></div>;
+
+  useEffect(() => {
+    const update = () => setTime(getCountdown(Date.now()));
+    update();
+
+    const interval = setInterval(update, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const labels = ["Days", "Hours", "Minutes", "Seconds"];
+
+  return (
+    <div className="countdown-grid" role="timer" aria-label="Countdown to November 27, 2026">
+      <div className="countdown-inner">
+        {labels.map((label, i) => {
+          const value = time ? String(time[i]).padStart(2, "0") : "00";
+
+          return (
+            <div className="countdown-unit" key={label}>
+              <div className="countdown-card">
+                <motion.span
+                  key={value}
+                  className="countdown-number"
+                  initial={{ opacity: 0, rotateX: -75, y: 12 }}
+                  animate={{ opacity: 1, rotateX: 0, y: 0 }}
+                  transition={{ duration: 0.45, ease: "easeOut" }}
+                >
+                  {value}
+                </motion.span>
+              </div>
+              <span className="countdown-label">{label}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
+
 
 function Diya({ className = "" }: { className?: string }) {
   return <div className={`diya-vignette ${className}`}><Artwork kind="diya" /><span className="diya-glow" /></div>;
@@ -83,7 +120,15 @@ function Index() {
         <Botanicals />
         <div className="ganpati-frame"><img className="frame-bell fb-l" src={bell} alt="" aria-hidden="true" /><img className="frame-bell fb-r" src={bell} alt="" aria-hidden="true" /><Artwork kind="ganpati" className="ganpati-art" /></div>
         <p className="invocation">{EVENT.invocation}</p><Divider /><p className="blessings-copy">{EVENT.blessings}</p>
-        <p className="calligraphy hosts">{EVENT.hosts}</p><p className="blessings-copy">Warmly welcome you.</p>
+       <p className="calligraphy hosts">{EVENT.hosts}</p>
+<p className="blessings-copy">Warmly welcome you.</p>
+
+<div className="hosts-countdown">
+  <p className="eyebrow">EVERY MOMENT BRINGS US CLOSER</p>
+  <h2 className="calligraphy">Until our new beginning</h2>
+  <Countdown />
+  <Diya />
+</div>
       </Reveal>
 
       <Reveal className="main-invitation" fx={1}><div className="ornamental-invitation"><span className="ornament-corner corner-tl" /><span className="ornament-corner corner-tr" /><span className="ornament-corner corner-bl" /><span className="ornament-corner corner-br" />
