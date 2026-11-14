@@ -96,6 +96,7 @@ export function Entrance({ onOpen }: { onOpen: () => void }) {
     const el = root.current; const c = ctx.current;
     if (!el || !c || busy.current || phase !== "ready") return;
     busy.current = true; setPhase("cutting");
+     music.prepareFromGesture();
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       gsap.set(el.querySelectorAll(".ribbon-stage"), { autoAlpha: 0 });
       setPhase("open"); onOpenRef.current(); return;
@@ -133,7 +134,7 @@ export function Entrance({ onOpen }: { onOpen: () => void }) {
         .set(q(".gold-wash"), { autoAlpha: 1, clipPath: `circle(0% at ${(cx / W) * 100}% ${(cy / innerHeight) * 100}%)` }, "cut+=.55")
         .to(q(".gold-wash"), { clipPath: `circle(150% at ${(cx / W) * 100}% ${(cy / innerHeight) * 100}%)`, duration: 1.15, ease: "power2.in" }, "cut+=.55")
        .add(() => {
-  music.startFromGesture();
+  music.revealFromGesture();
   setPhase("open");
   onOpenRef.current();
   gsap.set(q(".ribbon-stage"), { autoAlpha: 0 });
