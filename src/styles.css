@@ -905,21 +905,16 @@ html { scroll-behavior: smooth; }
 .invocation { font: 600 26px/1.5 var(--font-serif); color: var(--primary); margin: 14px 0 0; }
 .blessings-copy { font: 400 22px/1.5 var(--font-serif); margin: 12px auto; max-width: 470px; }
 .hosts {
-  width: min(100%, 680px);
+  width: 100%;
   max-width: 100%;
   margin: 16px auto;
-  padding-inline: 8px;
-  font-family: var(--font-serif);
-  font-size: clamp(24px, 3.2vw, 34px);
-  font-style: normal;
-  font-weight: 600;
-  line-height: 1.35;
-  letter-spacing: 0;
-  color: var(--primary);
+  padding: 0 8px;
+  font-size: clamp(17px, 5.2vw, 30px);
+  line-height: 1.3;
+  letter-spacing: -1px;
   text-align: center;
   white-space: normal;
-  overflow-wrap: anywhere;
-  text-wrap: balance;
+  overflow-wrap: break-word;
 }
 .main-invitation { padding-top: 30px; }
 .ornamental-invitation { position: relative; max-width: 800px; margin: 0 auto; padding: 62px clamp(24px, 8vw, 80px); background: linear-gradient(180deg, #fffaf0, #fbf3de); border: 3px solid var(--primary); box-shadow: var(--paper-shadow), 0 0 0 1px var(--gold), 0 0 0 7px var(--background), 0 0 0 8px var(--gold); outline: 1px solid var(--gold); outline-offset: -10px; }
@@ -1145,7 +1140,14 @@ address { font: normal 24px/1.65 var(--font-serif); margin: 22px 0; } address st
   .ribbon-stage { top: 58%; } .ceremonial-button { height: 46px; padding: 0 24px; font-size: 10px; } .ent-sub { font-size: 15px; }
   .botanicals img { width: 70px; height: 140px; opacity: .7; } .ent-foreground .botanicals img { width: 96px; height: 170px; }
   .invitation-section { padding: 46px 20px; } .invitation-section h2 { font-size: 34px; } .invitation-section h2.calligraphy { font-size: 41px; } .intro-copy { font-size: 21px; } .welcome-invitation .calligraphy { font-size: 38px !important; }
-  .blessings-copy { max-width: 270px; font-size: 20px; } .invocation { font-size: 21px; } .hosts { font-size: 32px; max-width: 250px; }
+  .blessings-copy { max-width: 270px; font-size: 20px; } .invocation { font-size: 21px; } .hosts {
+  font-size: clamp(17px, 5.2vw, 30px);
+  max-width: 100%;
+  padding: 0 8px;
+  line-height: 1.3;
+  letter-spacing: -1px;
+  white-space: normal;
+}
   .main-invitation { padding: 30px 14px 45px; } .ornamental-invitation { padding: 50px 22px 40px; } .invitation-copy { font-size: 21px; } .ceremony-date { gap: 14px; } .ceremony-date strong { font-size: 66px; } .ceremony-date > span { width: 72px; font-size: 8px; } .date-footnote { font-size: 19px; }
   .schedule-section { padding: 30px 22px 40px; } .ceremony-schedule { grid-template-columns: 1fr; margin-top: 15px; } .schedule-event { display: grid; grid-template-columns: 95px 1fr; column-gap: 18px; text-align: left; border-right: 0; border-bottom: 1px solid var(--border); padding: 23px 0; } .schedule-event:last-child { border: 0; } .schedule-event .ceremony-art { grid-row: 1 / 4; width: 95px; height: 105px; margin: auto; } .event-number { display: none; } .event-time { margin: 5px 0; } .schedule-event h3 { margin: 5px 0; font-size: 29px; } .event-note { font-size: 16px; margin: 5px 0; }
  
