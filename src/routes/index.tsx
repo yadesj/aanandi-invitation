@@ -14,17 +14,53 @@ import { fx } from "@/lib/fx";
 import bell from "@/assets/brass-bell.png";
 
 export const Route = createFileRoute("/")({
-  head: () => ({ meta: [
-    { title: "AANANDI — Griha Pravesh Invitation" },
-    { name: "description", content: "Join Mr. Arpan & Mrs. Krishna Doshi for the Vastu Pooja & Griha Pravesh Ceremony at AANANDI, Umreth, on Friday, November 27, 2026." },
-    { property: "og:title", content: "AANANDI — You're Cordially Invited" },
-    { property: "og:description", content: "Where Happiness Begins. Celebrate our new home with the Doshi family on November 27, 2026." },
-    { property: "og:type", content: "website" },
-    { name: "twitter:card", content: "summary_large_image" },
-  ] }),
-  component: Index,
+head: () => ({
+  meta: [
+    {
+      title: "AANANDI — Griha Pravesh Invitation",
+    },
+    {
+      name: "description",
+      content:
+        "Join Mr. Arpan & Mrs. Krishna Doshi for the Vastu Pooja & Griha Pravesh Ceremony at AANANDI, Umreth, on Friday, November 27, 2026.",
+    },
+    {
+      property: "og:title",
+      content: "AANANDI — You're Cordially Invited",
+    },
+    {
+      property: "og:description",
+      content:
+        "Where Happiness Begins. Celebrate our new home with the Doshi family on November 27, 2026.",
+    },
+    {
+      property: "og:type",
+      content: "website",
+    },
+    {
+      property: "og:image",
+      content: "https://YOUR-DOMAIN/thumbnail.png",
+    },
+    {
+      property: "og:image:width",
+      content: "1648",
+    },
+    {
+      property: "og:image:height",
+      content: "900",
+    },
+    {
+      name: "twitter:card",
+      content: "summary_large_image",
+    },
+    {
+      name: "twitter:image",
+      content: "https://YOUR-DOMAIN/thumbnail.png",
+    },
+  ],
+}),
+component: Index,
 });
-
 function Reveal({ children, className = "", id, fx: level }: { children: ReactNode; className?: string; id?: string; fx?: number }) {
   return <motion.section id={id} data-fx={level} className={`invitation-section ${className}`} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .12 }} transition={{ duration: .8 }}>{children}</motion.section>;
 }
