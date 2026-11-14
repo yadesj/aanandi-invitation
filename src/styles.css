@@ -1144,7 +1144,7 @@ address { font: normal 24px/1.65 var(--font-serif); margin: 22px 0; } address st
   .botanicals img { width: 70px; height: 140px; opacity: .7; } .ent-foreground .botanicals img { width: 96px; height: 170px; }
   .invitation-section { padding: 46px 20px; } .invitation-section h2 { font-size: 34px; } .invitation-section h2.calligraphy { font-size: 41px; } .intro-copy { font-size: 21px; } .welcome-invitation .calligraphy { font-size: 38px !important; }
   .blessings-copy { max-width: 270px; font-size: 20px; } .invocation { font-size: 21px; } .hosts {
-  font-size: clamp(17px, 5.2vw, 30px);
+  font-size: clamp(20px, 6vw, 34px);
   max-width: 100%;
   padding: 0 8px;
   line-height: 1.3;
