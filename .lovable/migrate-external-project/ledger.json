@@ -1,0 +1,10 @@
+{
+  "source": "code-archive",
+  "capabilities": [
+    {"capability":"Invitation code and artwork","source":"Uploaded HTML and 23 PNG assets","outcome":"migrate","status":"verified","next_action":null,"verification":"Desktop and mobile screenshots reviewed; every section and its artwork renders; no runtime errors; build OK."},
+    {"capability":"Countdown, calendar, directions, clipboard, sharing and replay","source":"Original client-side JavaScript","outcome":"preserve and improve","status":"verified","next_action":null,"verification":"Eight tests pass. Browser verified cutting, opening, clipboard readback, WhatsApp destination, replay and reduced motion. Calendar and maps URLs verified with exact event data; saving to an external account and geographic pin accuracy are outside preview verification."},
+    {"capability":"Music","source":"Original button has no audio file","outcome":"omit unavailable playback","status":"pending","next_action":"User can supply an audio file to enable music"},
+    {"capability":"Database, records, authentication, authorization, providers, public endpoints, callbacks, webhooks, schedules and secrets","source":"Inspected complete static HTML archive; no such capabilities or credentials","outcome":"not applicable","status":"verified","next_action":null},
+    {"capability":"Cutover","source":"No existing production URL supplied","outcome":"publish when approved","status":"pending","next_action":"User publishes the finished invitation"}
+  ]
+}
