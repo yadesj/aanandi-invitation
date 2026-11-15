@@ -164,7 +164,29 @@ function Index() {
         <Button variant="invitation" asChild><a href={calendarUrl} target="_blank" rel="noopener noreferrer"><CalendarDays />Add to calendar</a></Button>
       </div></Reveal>
 
-      <Reveal className="schedule-section" fx={.7}><p className="eyebrow">THE AUSPICIOUS DAY</p><h2>A celebration of blessings</h2><Divider /><div className="ceremony-schedule">{EVENT.schedule.map((event, i) => <article className="schedule-event" key={event.title}><span className="event-number">0{i + 1}</span><Artwork kind={event.asset} /><p className="event-time">{event.time}</p><h3>{event.title}</h3><p className="event-note">{event.note}</p></article>)}</div><p className="schedule-date"><CalendarDays size={15} />{EVENT.date}</p></Reveal>
+      <Reveal className="schedule-section" fx={.7}><p className="eyebrow">THE AUSPICIOUS DAY</p><h2>A celebration of blessings</h2><Divider />
+<div className="ceremony-schedule">
+  {EVENT.schedule.map((event, i) => (
+    <article className="schedule-event" key={event.title}>
+      <span className="event-number">0{i + 1}</span>
+      <Artwork kind={event.asset} />
+      <p className="event-time">{event.time}</p>
+      <h3>{event.title}</h3>
+      <p className="event-note">{event.note}</p>
+
+      {event.title === "Dinner" && (
+        <div className="dinner-venue">
+          <p className="eyebrow">DINNER VENUE</p>
+          <p>{EVENT.dinnerAddress}</p>
+          <a href={EVENT.dinnerDirectionsUrl} target="_blank" rel="noopener noreferrer">
+            <MapPin size={14} /> Get Directions <ArrowUpRight size={14} />
+          </a>
+        </div>
+      )}
+    </article>
+  ))}
+</div>
+<p className="schedule-date"><CalendarDays size={15} />{EVENT.date}</p></Reveal>
 
     
 
