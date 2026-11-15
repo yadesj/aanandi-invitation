@@ -18,6 +18,10 @@ export const EVENT = {
   address:
     "6, Shreenathji Villa, Opp. Panetar Park, Near Girirajji Temple, Umreth.",
 
+  dinnerAddress: "Nasikwala Hall, Ode Bazar, Umreth, Gujarat 388220",
+dinnerDirectionsUrl:
+  "https://www.google.com/maps/search/?api=1&query=Nasikwala+Hall%2C+Ode+Bazar%2C+Umreth%2C+Gujarat+388220",
+
   // Separate dinner venue
   dinnerAddress:
     "Nasikwala Hall, Ode Bazar, Umreth, Gujarat 388220",
