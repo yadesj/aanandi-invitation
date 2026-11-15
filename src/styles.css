@@ -1231,3 +1231,34 @@ address { font: normal 24px/1.65 var(--font-serif); margin: 22px 0; } address st
 } .page-footer { font-size: 6px; letter-spacing: .1em; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; } .invitation-section { opacity: 1 !important; transform: none !important; } }
+
+
+
+.dinner-venue {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(150, 115, 65, 0.3);
+  text-align: center;
+}
+
+.dinner-venue .eyebrow {
+  margin-bottom: 8px;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.dinner-venue p:not(.eyebrow) {
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.dinner-venue a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: inherit;
+  font-size: 12px;
+  text-decoration: none;
+}
