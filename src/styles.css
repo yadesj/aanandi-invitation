@@ -1235,50 +1235,87 @@ address { font: normal 24px/1.65 var(--font-serif); margin: 22px 0; } address st
 
 
 
-/* Dinner venue - mobile and desktop alignment */
+
+/* =================================
+   DINNER VENUE
+================================= */
+
 .dinner-venue {
   grid-column: 1 / -1;
   width: 100%;
   box-sizing: border-box;
   margin-top: 18px;
-  padding: 18px 12px 0;
+  padding: 20px 12px 0;
   border-top: 1px solid rgba(150, 115, 65, 0.3);
-  text-align: center;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
+/* Dinner venue heading */
 .dinner-venue .eyebrow {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   font-size: 11px;
   letter-spacing: 2.5px;
   text-align: center;
+  color: #806B58;
 }
 
+/* Hall address */
 .dinner-venue p:not(.eyebrow) {
   width: 100%;
   max-width: 320px;
-  margin: 0 auto 14px;
+  margin: 0 auto 16px;
   font-size: 15px;
   line-height: 1.7;
   text-align: center;
+  color: #594536;
+  overflow-wrap: break-word;
 }
 
+/* Elegant rectangular directions button */
 .dinner-venue a {
   display: inline-flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  flex-direction: row;
+  gap: 9px;
+
+  padding: 10px 20px;
+  min-height: 42px;
+  box-sizing: border-box;
+
+  background: #70263A;
+  color: #FFFFFF;
+  border: 1px solid #A77B45;
+  border-radius: 6px;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  line-height: 1;
   white-space: nowrap;
-  width: auto;
-  color: inherit;
-  font-size: 14px;
   text-decoration: none;
+
+  box-shadow: 0 3px 9px rgba(80, 35, 35, 0.13);
+  transition: background 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-/* Mobile alignment */
+.dinner-venue a:hover {
+  background: #591C2E;
+  box-shadow: 0 5px 12px rgba(80, 35, 35, 0.2);
+  transform: translateY(-1px);
+}
+
+.dinner-venue a:active {
+  transform: translateY(0);
+}
+
+/* Mobile responsive alignment */
 @media (max-width: 600px) {
   .dinner-venue {
     grid-column: 1 / -1;
@@ -1286,13 +1323,20 @@ address { font: normal 24px/1.65 var(--font-serif); margin: 22px 0; } address st
     padding: 18px 10px 0;
   }
 
+  .dinner-venue .eyebrow {
+    font-size: 10px;
+  }
+
   .dinner-venue p:not(.eyebrow) {
     max-width: 280px;
     font-size: 14px;
+    line-height: 1.7;
   }
 
   .dinner-venue a {
+    padding: 10px 18px;
+    min-height: 40px;
+    font-size: 13px;
     white-space: nowrap;
-    font-size: 14px;
   }
 }
